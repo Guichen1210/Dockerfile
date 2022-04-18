@@ -1,7 +1,7 @@
 FROM debian
 RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install firefox-esr mate-system-monitor  git lxde tightvncserver wget   -y
-RUN wget https://github.com/novnc/noVNC/archive/refs/tags/v1.2.0.tar.gz
+RUN wget https://github.com/novnc/noVNC/archive/refs/tags/v1.3.0.tar.gz
 RUN tar -xvf v1.2.0.tar.gz
 RUN mkdir  /root/.vnc
 RUN echo 'asdf2121..' | vncpasswd -f > /root/.vnc/passwd
