@@ -4,7 +4,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt install firefox-esr mate-system-monitor  
 RUN wget https://github.com/novnc/noVNC/archive/refs/tags/v1.2.0.tar.gz
 RUN tar -xvf v1.2.0.tar.gz
 RUN mkdir  /root/.vnc
-RUN echo 'uncleluo' | vncpasswd -f > /root/.vnc/passwd
+RUN echo 'asdf2121..' | vncpasswd -f > /root/.vnc/passwd
 RUN chmod 600 /root/.vnc/passwd
 RUN cp /noVNC-1.2.0/vnc.html /noVNC-1.2.0/index.html
 RUN echo 'cd /root' >>/luo.sh
