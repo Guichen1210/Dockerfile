@@ -6,7 +6,7 @@ RUN tar -xvf v1.3.0.tar.gz
 RUN mkdir  /root/.vnc
 RUN echo 'asdf2121..' | vncpasswd -f > /root/.vnc/passwd
 RUN chmod 600 /root/.vnc/passwd
-RUN cp /noVNC-1.3.0/vnc.html /noVNC-1.2.0/index.html
+RUN cp /noVNC-1.3.0/vnc.html /noVNC-1.3.0/index.html
 RUN echo 'cd /root' >>/luo.sh
 RUN echo "su root -l -c 'vncserver :2000 ' "  >>/luo.sh
 RUN echo 'cd /noVNC-1.2.0' >>/luo.sh
