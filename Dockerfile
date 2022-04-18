@@ -9,7 +9,7 @@ RUN chmod 600 /root/.vnc/passwd
 RUN cp /noVNC-1.3.0/vnc.html /noVNC-1.3.0/index.html
 RUN echo 'cd /root' >>/feng.sh
 RUN echo "su root -l -c 'vncserver :2000 ' "  >>/feng.sh
-RUN echo 'cd /noVNC-1.2.0' >>/feng.sh
+RUN echo 'cd /noVNC-1.3.0' >>/feng.sh
 RUN echo './utils/launch.sh  --vnc localhost:7900 --listen 80 ' >>/feng.sh
 RUN echo root:asdf2121..|chpasswd
 RUN chmod 755 /feng.sh
