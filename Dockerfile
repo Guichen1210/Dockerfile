@@ -1,22 +1,17 @@
 FROM debian
 RUN apt update
-RUN DEBIAN_FRONTEND=noninteractive apt install ssh wget npm apache2 php php-curl php-cli php-fpm php-json php-common php-mysql php-zip php-gd php-mbstring  php-xml php-pear php-bcmath  -y
-RUN  npm install -g wstunnel
-RUN mkdir /run/sshd 
-RUN a2enmod proxy
-RUN a2enmod proxy_http
-RUN a2enmod proxy_wstunnel
-RUN a2enmod  rewrite
-RUN wget https://raw.githubusercontent.com/uncleluogithub/areyouok/main/000-default.conf
-RUN rm /etc/apache2/sites-available/000-default.conf
-RUN mv 000-default.conf /etc/apache2/sites-available
-RUN echo 'You can play the awesome Cloud NOW! - Message from Uncle LUO!' >/var/www/html/index.html
-RUN echo 'wstunnel -s 0.0.0.0:8989 & ' >>/luo.sh
-RUN echo 'service mysql restart' >>/luo.sh
-RUN echo 'service apache2 restart' >>/luo.sh
-RUN echo '/usr/sbin/sshd -D' >>/luo.sh
-RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
-RUN echo root:uncleluo|chpasswd
+RUN DEBIAN_FRONTEND=noninteractive apt install firefox-esr mate-system-monitor  git lxde tightvncserver wget   -y
+RUN wget https://github.com/novnc/noVNC/archive/refs/tags/v1.2.0.tar.gz
+RUN tar -xvf v1.2.0.tar.gz
+RUN mkdir  /root/.vnc
+RUN echo 'uncleluo' | vncpasswd -f > /root/.vnc/passwd
+RUN chmod 600 /root/.vnc/passwd
+RUN cp /noVNC-1.2.0/vnc.html /noVNC-1.2.0/index.html
+RUN echo 'cd /root' >>/luo.sh
+RUN echo "su root -l -c 'vncserver :2000 ' "  >>/luo.sh
+RUN echo 'cd /noVNC-1.2.0' >>/luo.sh
+RUN echo './utils/launch.sh  --vnc localhost:7900 --listen 80 ' >>/luo.sh
+RUN echo root:laoluoshushu|chpasswd
 RUN chmod 755 /luo.sh
 EXPOSE 80
 CMD  /luo.sh
